@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Login | AndresReyes{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+
+    <div class="col-md-5 col-lg-4 fade-up">
+
+        <div class="p-4 bg-surface border-soft rounded">
+
+            <!-- Header -->
+            <div class="text-center mb-4">
+                <h3 class="fw-bold">Bienvenido</h3>
+                <p class="text-muted-custom">Accede a tu cuenta</p>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Errores -->
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger py-2">
+                        {% for error in form.non_field_errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <label class="form-label text-muted-custom">Usuario</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-soft">
+                            <i class="bi bi-person text-muted-custom"></i>
+                        </span>
+                        <input 
+                            type="text"
+                            name="username"
+                            value="{{ form.username.value|default:'' }}"
+                            class="form-control bg-dark text-light border-soft"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label class="form-label text-muted-custom">Contraseña</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-soft">
+                            <i class="bi bi-lock text-muted-custom"></i>
+                        </span>
+                        <input 
+                            type="password"
+                            name="password"
+                            class="form-control bg-dark text-light border-soft"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="d-grid mt-3">
+                    <button class="btn btn-gradient">
+                        Iniciar sesión
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Footer -->
+            <div class="text-center mt-4">
+                <small class="text-muted-custom">
+                    ¿No tienes cuenta?
+                    <a href="{% url 'accounts:signup' %}" class="text-primary-custom text-decoration-none">
+                        Regístrate
+                    </a>
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

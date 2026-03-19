@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Crear cuenta | AndresReyes{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center align-items-center" style="min-height: 85vh;">
+
+    <div class="col-md-6 col-lg-5 fade-up">
+
+        <div class="p-4 p-md-5 bg-surface border-soft rounded">
+
+            <!-- Header -->
+            <div class="text-center mb-4">
+                <h3 class="fw-bold">Crear cuenta</h3>
+                <p class="text-muted-custom">
+                    Empieza a construir con datos 🚀
+                </p>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+
+                <!-- Errores globales -->
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger py-2">
+                        {% for error in form.non_field_errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <label class="form-label text-muted-custom">Usuario</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-soft">
+                            <i class="bi bi-person text-muted-custom"></i>
+                        </span>
+
+                        <input 
+                            type="text"
+                            name="username"
+                            value="{{ form.username.value|default:'' }}"
+                            class="form-control bg-dark text-light border-soft"
+                            required
+                        >
+                    </div>
+
+                    {% if form.username.errors %}
+                        <small class="text-danger">
+                            {{ form.username.errors.0 }}
+                        </small>
+                    {% endif %}
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label class="form-label text-muted-custom">Contraseña</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-soft">
+                            <i class="bi bi-lock text-muted-custom"></i>
+                        </span>
+
+                        <input 
+                            type="password"
+                            name="password1"
+                            class="form-control bg-dark text-light border-soft"
+                            required
+                        >
+                    </div>
+
+                    {% if form.password1.errors %}
+                        <small class="text-danger">
+                            {{ form.password1.errors.0 }}
+                        </small>
+                    {% endif %}
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mb-3">
+                    <label class="form-label text-muted-custom">Confirmar contraseña</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-soft">
+                            <i class="bi bi-shield-lock text-muted-custom"></i>
+                        </span>
+
+                        <input 
+                            type="password"
+                            name="password2"
+                            class="form-control bg-dark text-light border-soft"
+                            required
+                        >
+                    </div>
+
+                    {% if form.password2.errors %}
+                        <small class="text-danger">
+                            {{ form.password2.errors.0 }}
+                        </small>
+                    {% endif %}
+                </div>
+
+                <!-- Submit -->
+                <div class="d-grid mt-4">
+                    <button class="btn btn-gradient">
+                        Crear cuenta
+                    </button>
+                </div>
+
+            </form>
+
+            <!-- Divider -->
+            <div class="text-center my-4">
+                <small class="text-muted-custom">o</small>
+            </div>
+
+            <!-- Login redirect -->
+            <div class="text-center">
+                <small class="text-muted-custom">
+                    ¿Ya tienes cuenta?
+                    <a href="{% url 'accounts:login' %}" class="text-primary-custom text-decoration-none">
+                        Inicia sesión
+                    </a>
+                </small>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
