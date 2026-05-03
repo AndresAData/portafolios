@@ -1,0 +1,101 @@
+# ==============================
+# PYTHON
+# ==============================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+*.env
+# ==============================
+# DJANGO
+# ==============================
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Media y estáticos generados
+/media
+/staticfiles
+
+# Archivos de migración (opcional: si quieres controlarlos, elimina esta línea)
+**/migrations/*
+!**/migrations/__init__.py
+
+# ==============================
+# ENTORNOS VIRTUALES
+# ==============================
+venv/
+env/
+ENV/
+.venv/
+
+# ==============================
+# VARIABLES DE ENTORNO
+# ==============================
+.env
+.env.*
+*.env
+
+# ==============================
+# EDITORES / IDEs
+# ==============================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==============================
+# SISTEMA OPERATIVO
+# ==============================
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ==============================
+# ARCHIVOS DE BUILD / DIST
+# ==============================
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ==============================
+# TESTING / COVERAGE
+# ==============================
+htmlcov/
+.coverage
+.coverage.*
+.cache
+pytest_cache/
+
+# ==============================
+# DOCUMENTACIÓN
+# ==============================
+docs/_build/
+
+# ==============================
+# BASES DE DATOS
+# ==============================
+*.sqlite3
+*.db
+*.sql
+
+# PostgreSQL dumps
+*.dump
+
+# ==============================
+# OTROS
+# ==============================
+*.bak
+*.swp
+*.tmp
